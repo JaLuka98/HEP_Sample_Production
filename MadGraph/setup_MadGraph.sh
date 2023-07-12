@@ -1,0 +1,1 @@
+source /net/software/cms/madgraph/setup_MG5.sh
