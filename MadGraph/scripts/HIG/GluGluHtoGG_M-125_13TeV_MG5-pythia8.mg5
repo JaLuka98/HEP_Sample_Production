@@ -1,0 +1,15 @@
+import model heft
+set gauge unitary
+generate g g > h / Z a, h > a a
+output ../../output/HIG/GluGluHtoGG_M-125_13TeV_MG5-pythia8
+launch ../../output/HIG/GluGluHtoGG_M-125_13TeV_MG5-pythia8
+shower=PY8
+done
+set use_syst False
+set ickkw 1
+set xqcut 30
+set scale 125
+set dsqrt_q2fact1 125
+set dsqrt_q2fact2 125
+set nevents 100k
+done

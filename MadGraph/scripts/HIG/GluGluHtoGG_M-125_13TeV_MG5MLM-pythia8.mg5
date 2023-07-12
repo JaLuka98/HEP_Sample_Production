@@ -1,0 +1,19 @@
+import model heft
+set gauge unitary
+generate g g > h QCD=0 QED=0 / Z a, h > a a
+add process g g > h j QCD=1 QED=0 / Z a, h > a a
+add process g g > h j j QCD=2 QED=0 / Z a, h > a a
+output ../../output/HIG/GluGluHtoGG_M-125_13TeV_MG5MLM-pythia8
+launch ../../output/HIG/GluGluHtoGG_M-125_13TeV_MG5MLM-pythia8
+shower=PY8
+done
+set use_syst False
+set ickkw 1
+set xqcut 30
+set auto_ptj_mjj T
+set drjj 0
+set scale 125
+set dsqrt_q2fact1 125
+set dsqrt_q2fact2 125
+set nevents 200k  # generate more events when using jet matching because of eff < 100%
+done
