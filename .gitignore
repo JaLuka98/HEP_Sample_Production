@@ -1,5 +1,7 @@
 # Ignore the actual output of MadGraph5 because it can be created using the scripts in this repo
 MadGraph/output/
+# Ignore the common Delphes cards as we pull them from remote
+MadGraph/cards/delphes_cards/common
 
 # Ignore py.py everywhere
 **/py.py
