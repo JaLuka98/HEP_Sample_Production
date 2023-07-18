@@ -1,0 +1,22 @@
+import model sm
+set gauge unitary
+define p = g u c d s u~ c~ d~ s~
+define j = g u c d s u~ c~ d~ s~
+define l+ = e+ mu+
+define l- = e- mu-
+define lta+ = e+ mu+ ta+
+define lta- = e- mu- ta-
+define vl = ve vm vt
+define vl~ = ve~ vm~ vt~
+generate p p > t t~ H, (t > W+ b, W+ > lta+ vl), (t~ > W- b~, W- > j j), (H > b b~)
+add process p p > t t~ H, (t > W+ b, W+ > j j), (t~ > W- b~, W- > lta- vl~), (H > b b~)
+output ../../output/HIG/pptottH-incl-bb_13TeV_MG5-pythia8
+launch ../../output/HIG/pptottH-incl-bb_13TeV_MG5-pythia8
+shower=PY8
+done
+# Cuts for the Higgs pT, example
+#set pt_min_pdg {25:0}
+#set pt_max_pdg {25:1000}
+set use_syst False
+set nevents 100k
+done
