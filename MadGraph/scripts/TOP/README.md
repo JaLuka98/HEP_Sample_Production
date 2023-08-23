@@ -1,0 +1,1 @@
+- xqcut of 10 GeV for ttZ is chosen based on https://arxiv.org/pdf/2012.06872.pdf
