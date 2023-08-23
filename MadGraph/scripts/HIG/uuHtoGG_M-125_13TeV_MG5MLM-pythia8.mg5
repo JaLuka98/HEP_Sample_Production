@@ -1,0 +1,31 @@
+import model SMEFTsim_U35_MwScheme_UFO-lightQuarkYukawas
+set gauge unitary
+# This does not work (with kappa uuH vertex and forbidding z a s-channel: does not work super well because contains H->cc decays)
+#generate u u~ > h > a a SMHLOOP==1
+#generate u u~ > h > a a j / z a SMHLOOP==1
+#generate u u~ > h > a a j j / z a a SMHLOOP==1
+
+# Use QCD==2 to avoid VBF-like diagrams and uu->uuH Higgs-fusion diagrams
+generate u u~ > h > a a / z a c c~ QCD==0 SMHLOOP==1
+add process u u~ > h > a a j / z a c c~ QCD==1 SMHLOOP==1
+add process u u~ > h > a a j j / z a c c~ QCD==2 SMHLOOP==1
+# This is now the kappa approach, using cuH would also be possible, maybe later
+
+#add process u u~ > h SMHLOOP==0 / Z a, h > a a SMHLOOP==1
+#add process u u~ > h j SMHLOOP==0 / Z a, h > a a SMHLOOP==1
+#add process u u~ > h j j SMHLOOP==0 / Z a, h > a a SMHLOOP==1
+output ../../output/HIG/uuHtoGG_M-125_13TeV_MG5MLM-pythia8
+launch ../../output/HIG/uuHtoGG_M-125_13TeV_MG5MLM-pythia8
+shower=PY8
+done
+set ymup 4.18 ## SMEFTsim uses 4.18 for ymb instead of 4.7!
+set use_syst False
+set ickkw 1
+set xqcut 30
+set auto_ptj_mjj T
+set drjj 0
+set scale 125
+set dsqrt_q2fact1 31.25
+set dsqrt_q2fact2 31.25
+set nevents 100k
+done
