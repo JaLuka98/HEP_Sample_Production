@@ -8,7 +8,7 @@ Define vl = ve vm vt
 Define vl~ = ve~ vm~ vt~
 generate p p > t t~ Z, (t > W+ b, W+ > l+ vl), (t~ > W- b~, W- > j j), (Z > l+ l-)
 add process p p > t t~ Z, (t > W+ b, W+ > j j), (t~ > W- b~, W- > l- vl~), (Z > l+ l-)
-generate p p > t t~ Z j, (t > W+ b, W+ > l+ vl), (t~ > W- b~, W- > j j), (Z > l+ l-)
+add process p p > t t~ Z j, (t > W+ b, W+ > l+ vl), (t~ > W- b~, W- > j j), (Z > l+ l-)
 add process p p > t t~ Z j, (t > W+ b, W+ > j j), (t~ > W- b~, W- > l- vl~), (Z > l+ l-)
 output ../../output/TOP/pptottZ-3l_13TeV_MG5MLM-pythia8
 launch ../../output/TOP/pptottZ-3l_13TeV_MG5MLM-pythia8
