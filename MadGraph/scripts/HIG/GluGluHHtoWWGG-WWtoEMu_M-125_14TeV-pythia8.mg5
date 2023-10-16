@@ -1,0 +1,13 @@
+import model heft
+set gauge unitary
+generate p p > h h, h > a a, h > e+ mu- vm~ ve
+add process p p > h h, h > a a, h > e- mu+ vm ve~
+output ../../output/HIG/GluGluHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
+launch ../../output/HIG/GluGluHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
+shower=PY8
+detector=DELPHES
+done
+set use_syst False
+set ebeam 7000
+set nevents 50k
+done
