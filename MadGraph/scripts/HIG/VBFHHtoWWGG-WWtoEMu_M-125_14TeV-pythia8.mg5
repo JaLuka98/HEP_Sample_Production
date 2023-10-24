@@ -1,7 +1,8 @@
-import model loop_sm
-generate g g > h h QED<=99 [noborn=QCD]
-output ../../output/HIG/GluGluHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
-launch ../../output/HIG/GluGluHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
+import model sm
+set gauge unitary
+generate p p > h h j j $$ w+ w- z a QCD=0
+output ../../output/HIG/VBFHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
+launch ../../output/HIG/VBFHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
 shower=PY8
 detector=DELPHES
 madspin=ON
