@@ -1,0 +1,15 @@
+import model loop_sm
+generate p p > t t~ h, (t > W+ b, W+ > mu+ vm), (t~ > W- b~, W- > e- ve~)
+# Do not include charge conjugation, multiply weights later
+output ../../output/HIG/TTHToGG_TTToEMu2Nu_M-125_14TeV-MG5-pythia8
+launch ../../output/HIG/TTHToGG_TTToEMu2Nu_M-125_14TeV-MG5-pythia8
+shower=PY8
+detector=DELPHES
+madspin=ON
+done
+../../cards/madspin_cards/H_yy.dat
+# That madspin card only includes decay of H to two photons via loop
+set use_syst False
+set ebeam 7000
+set nevents 50k
+done
