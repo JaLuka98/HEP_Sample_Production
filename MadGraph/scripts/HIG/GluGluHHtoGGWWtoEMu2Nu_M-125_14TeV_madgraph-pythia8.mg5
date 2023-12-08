@@ -1,7 +1,7 @@
 import model loop_sm
 generate g g > h h QED<=99 [noborn=QCD]
-output ../../output/HIG/GluGluHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
-launch ../../output/HIG/GluGluHHtoWWGG-WWtoEMu_M-125_14TeV-pythia8
+output ../../output/HIG/GluGluHHtoGGWWtoEMu2Nu_M-125_14TeV_madgraph-pythia8
+launch ../../output/HIG/GluGluHHtoGGWWtoEMu2Nu_M-125_14TeV_madgraph-pythia8
 shower=PY8
 detector=DELPHES
 madspin=ON
@@ -9,9 +9,10 @@ done
 ../../cards/madspin_cards/HH_WWyy.dat
 # Do not include charge conjugation, multiply weights later
 # That madspin card only includes "decay h > w+ w- > e- mu+ ve~ vm"
-../../cards/delphes_cards/custom/delphes_card_CMS_reducedInfo.tcl
+#../../cards/delphes_cards/custom/delphes_card_CMS_reducedInfo.tcl
+../../cards/delphes_cards/common/CMS_PhaseII_0PU_v02.tcl
 set use_syst False
 set ebeam 7000
 set nevents 50000
-set mt scan:[172.5 for _ in range(2)]
+#set mt scan:[172.5 for _ in range(2)]
 done
