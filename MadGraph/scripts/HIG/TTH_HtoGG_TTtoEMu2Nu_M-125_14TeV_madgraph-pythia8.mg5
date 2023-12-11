@@ -14,4 +14,5 @@ set ebeam 7000
 set nevents 50k
 set cut_decays False # This way, the sample is generated completely inclusively
 # No cuts are done on top quarks or Higgs bosons by default
+set mt scan:[172.5 for _ in range(10)] # This basically means generate 10*50k events = 500k events in 10 batches of 50k.
 done
