@@ -11,3 +11,5 @@ TODO: Add Delphes instructions
 One can run Delphes during the MadGraph run or afterwards ("standalone").
 To run standalone: 
 `/net/software/cms/madgraph/MG5_aMC_v3_4_0/Delphes/DelphesHepMC ../../../../../cards/delphes_cards/common/delphes_card_CMS.tcl tag_1_pythia8_events_delphes_card_CMS.root tag_1_pythia8_events.hepmc`
+
+`/net/software/cms/madgraph/MG5_aMC_v3_4_0/Delphes/DelphesHepMC ../../../../../cards/delphes_cards/custom/delphes_card_CMS_noSmear.tcl tag_1_pythia8_events_delphes_card_CMS_noSmear.root tag_1_pythia8_events.hepmc`
