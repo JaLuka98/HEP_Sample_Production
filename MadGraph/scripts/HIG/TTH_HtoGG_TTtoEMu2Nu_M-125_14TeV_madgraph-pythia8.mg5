@@ -1,0 +1,17 @@
+import model loop_sm
+generate p p > t t~ h, (t > W+ b, W+ > mu+ vm), (t~ > W- b~, W- > e- ve~)
+# Do not include charge conjugation, multiply weights later
+output ../../output/HIG/TTH_HtoGG_TTtoEMu2Nu_M-125_14TeV_madgraph-pythia8
+launch ../../output/HIG/TTH_HtoGG_TTtoEMu2Nu_M-125_14TeV_madgraph-pythia8
+shower=PY8
+detector=OFF # Run Delphes afterward on top of the hepmc
+madspin=ON
+done
+../../cards/madspin_cards/H_yy.dat
+# That madspin card only includes decay of H to two photons via loop
+set use_syst False
+set ebeam 7000
+set nevents 50k
+set cut_decays False # This way, the sample is generated completely inclusively
+# No cuts are done on top quarks or Higgs bosons by default
+done
