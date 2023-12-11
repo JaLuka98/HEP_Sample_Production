@@ -11,9 +11,9 @@ def create_condor_submit_script(index, hepmc_gz_file, process_directory):
     condor_submit_script_content = f"""
 executable = ./condor_run.sh
 arguments = {hepmc_gz_file}
-output = {process_directory}/{hepmc_stem}_{index}_out.log
-error = {process_directory}/{hepmc_stem}_{index}_err.log
-log = {process_directory}/{hepmc_stem}_{index}_condor.log
+output = {process_directory}/{hepmc_stem}_{index}.out
+error = {process_directory}/{hepmc_stem}_{index}.err
+log = {process_directory}/{hepmc_stem}_{index}.log
 request_memory = 10GB
 queue
 """
@@ -55,7 +55,7 @@ def process_directory(directory):
     process_name = extract_process_name(directory)
 
     # Create a dedicated directory for HTCondor files
-    condor_files_directory = f"./condor_files_{process_name}"
+    HTCondor_files_directory = f"./condor_files_{process_name}"
     os.makedirs(condor_files_directory, exist_ok=True)
 
     # Create a common bash script for running Delphes
