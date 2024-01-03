@@ -1,17 +1,14 @@
-import model loop_sm
-generate p p > h z
+import model sm
+generate p p > h z, z > ta+ ta-
 output ../../output/HIG/ZHtoGGTauTauTo2L4Nu_M-125_14TeV_madgraph-pythia8
 launch ../../output/HIG/ZHtoGGTauTauTo2L4Nu_M-125_14TeV_madgraph-pythia8
 detector=OFF # Do not include Delphes detector simulation, we run it on top afterwards
-madspin=ON
+madspin=OFF
 shower=Pythia8
 done
 set use_syst False
-../../cards/pythia8_cards/pythia8_card_tauDecaysLep.dat
-set spinmode none
-decay z > ta+ ta-
-decay h > a a [noborn=QED]
+../../cards/pythia8_cards/pythia8_card_Hgamgam_tauDecaysLep.dat
 set ebeam 7000
 set nevents 50000
-set mt scan:[172.5 for _ in range(15)] # This basically means generate 20*50k events = 500k events in 20 batches of 50k.
+set mt scan:[172.5 for _ in range(20)] # This basically means generate 20*50k events = 500k events in 20 batches of 50k.
 done
