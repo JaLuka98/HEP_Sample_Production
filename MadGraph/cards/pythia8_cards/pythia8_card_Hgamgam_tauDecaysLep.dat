@@ -89,3 +89,5 @@ SysCalc:fullCutVariation = off
 !15:onIfMatch = 16 11 -12
 !15:onIfMatch = 16 13 -14 takes precendence so cannot use this one
 15:onIfAny = -12 -14 12 14
+25:onMode = off
+25:onIfMatch = 22 22
