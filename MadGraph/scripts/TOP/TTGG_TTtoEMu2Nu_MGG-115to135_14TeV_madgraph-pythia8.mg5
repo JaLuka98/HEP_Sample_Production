@@ -19,5 +19,5 @@ set pta 10 # default is 10, it should not be possible to go looser at HL-LHC, so
 set mmaa 115
 set mmaamax 135
 set cut_decays False # No cuts on top decay products
-#set mt scan:[172.5 for _ in range(20)] # This basically means generate 20*50k events = 1000k events in 20 batches of 50k.
+set mt scan:[172.5 for _ in range(20)] # This basically means generate 20*50k events = 1000k events in 20 batches of 50k.
 done
