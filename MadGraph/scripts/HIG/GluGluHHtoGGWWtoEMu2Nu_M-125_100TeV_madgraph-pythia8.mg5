@@ -1,0 +1,17 @@
+import model loop_sm
+generate g g > h h QED<=99 [noborn=QCD]
+output ../../output/HIG/GluGluHHtoGGWWtoEMu2Nu_M-125_100TeV_madgraph-pythia8
+launch ../../output/HIG/GluGluHHtoGGWWtoEMu2Nu_M-125_100TeV_madgraph-pythia8
+shower=PY8
+detector=OFF # Do not include Delphes detector simulation, we run it on top afterwards
+# Note that MadGraph5+Pythia8+Delphes does not work if Delphes needs auxiliary files (like for example pileup minbias)
+madspin=ON
+done
+../../cards/madspin_cards/HH_WWyy.dat
+# Do not include charge conjugation, multiply weights later
+# That madspin card only includes "decay h > w+ w- > e- mu+ ve~ vm"
+set use_syst False
+set ebeam 50000
+set nevents 50000
+set mt scan:[172.5 for _ in range(10)] # This basically means generate 10*50k events = 500k events in 10 batches of 50k.
+done
