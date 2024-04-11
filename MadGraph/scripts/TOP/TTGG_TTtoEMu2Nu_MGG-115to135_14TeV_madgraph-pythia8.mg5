@@ -15,7 +15,7 @@ set nevents 50k
 set etaa 5.0 # default is 2.5, so this is a little more inclusive
 set draa 0.4 # default is 0.4, perhaps this can be loosened but should be ok for now
 set pta 10 # default is 10, it should not be possible to go looser at HL-LHC, so it is okay
-# Constrain the invariant mass of the photons to 117-133, otherwise the efficiency will be far too low if TTGG is treated as a background for HH with one Higgs decaying to two photons
+# Constrain the invariant mass of the photons to 115-135, otherwise the efficiency will be far too low if TTGG is treated as a background for HH with one Higgs decaying to two photons
 set mmaa 115
 set mmaamax 135
 set cut_decays False # No cuts on top decay products
