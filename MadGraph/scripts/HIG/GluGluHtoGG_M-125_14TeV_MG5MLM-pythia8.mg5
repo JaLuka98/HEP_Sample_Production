@@ -1,0 +1,24 @@
+import model heft
+set gauge unitary
+# Take all hadronic pp -> h(gg) + X processes where Higgs couples to gluons and photons come from Higgs!
+generate p p > h > a a QCD==0 QED=0 HIG==1 HIW==1 / Z
+add process p p > h > a a j QCD==1 QED=0 HIG==1 HIW==1 / Z
+add process p p > h > a a j j QCD==2 QED=0 HIG==1 HIW==1 / Z
+# Note that the hgg vertex is QCD==0
+output /user/scratch/spaeh/MG5_temp/HIG/GluGluHtoGG_M-125_14TeV_MG5MLM-pythia8
+launch /user/scratch/spaeh/MG5_temp/HIG/GluGluHtoGG_M-125_14TeV_MG5MLM-pythia8
+shower=PY8
+detector=ON # use Delphes
+done
+../../cards/delphes_cards/custom/particleLevel.tcl # Give Delphes card
+set use_syst False
+set ebeam 7000
+set ickkw 1
+set xqcut 30
+set auto_ptj_mjj T
+set drjj 0
+set scale 125
+set dsqrt_q2fact1 125
+set dsqrt_q2fact2 125
+set nevents 250k  # generate more events when using jet matching because of eff < 100%
+done

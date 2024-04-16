@@ -3,12 +3,12 @@
 #######################################
 
 set ExecutionPath {
+  NeutrinoFilter
   PhotonFilter
+  PhotonIsolation
   ElectronFilter
   MuonFilter
 
-  NeutrinoFilter
-  
   GenJetFinder
 
   GenMissingET
@@ -18,41 +18,6 @@ set ExecutionPath {
   InterestingParticlesFilter
 
   TreeWriter
-}
-
-#################
-# Photon filter
-#################
-
-module PdgCodeFilter PhotonFilter {
-  set InputArray Delphes/stableParticles
-  set OutputArray photons
-  set Invert true
-  add PdgCode {22}
-}
-
-#################
-# Electron filter
-#################
-
-module PdgCodeFilter ElectronFilter {
-  set InputArray Delphes/stableParticles
-  set OutputArray electrons
-  set Invert true
-  add PdgCode {11}
-  add PdgCode {-11}
-}
-
-#################
-# Muon filter
-#################
-
-module PdgCodeFilter MuonFilter {
-  set InputArray Delphes/stableParticles
-  set OutputArray muons
-  set Invert true
-  add PdgCode {13}
-  add PdgCode {-13}
 }
 
 #####################
@@ -73,6 +38,58 @@ module PdgCodeFilter NeutrinoFilter {
   add PdgCode {-16}
 }
 
+#################
+# Photon filter
+#################
+# Do not keep particles that are too low pT
+
+module PdgCodeFilter PhotonFilter {
+  set InputArray Delphes/stableParticles
+  set OutputArray photons
+  set Invert true
+  set PTMin 10. 
+  add PdgCode {22}
+}
+
+module Isolation PhotonIsolation {
+  set CandidateInputArray PhotonFilter/photons
+  set IsolationInputArray NeutrinoFilter/filteredParticles
+
+  set OutputArray photons
+
+  set DeltaRMax 0.3
+  set PTMin 0.0
+  set PTRatioMax 0.5
+}
+
+#################
+# Electron filter
+#################
+# Do not keep particles that are too low pT
+
+module PdgCodeFilter ElectronFilter {
+  set InputArray Delphes/stableParticles
+  set OutputArray electrons
+  set Invert true
+  set PTMin 10.
+  add PdgCode {11}
+  add PdgCode {-11}
+}
+
+#################
+# Muon filter
+#################
+# Do not keep particles that are too low pT
+
+module PdgCodeFilter MuonFilter {
+  set InputArray Delphes/stableParticles
+  set OutputArray muons
+  set Invert true
+  set PTMin 10.
+  add PdgCode {13}
+  add PdgCode {-13}
+}
+
 #####################
 # MC truth jet finder
 #####################
@@ -84,7 +101,7 @@ module FastJetFinder GenJetFinder {
     # algorithm: 1 CDFJetClu, 2 MidPoint, 3 SIScone, 4 kt, 5 Cambridge/Aachen, 6 antikt
     
     set JetAlgorithm 6
-    set ParameterR 0.4
+    set ParameterR 0.5
     set JetPTMin 20.0
 }
 
@@ -105,10 +122,10 @@ module Merger GenMissingET {
 module UniqueObjectFinder UniqueObjectFinder {
 # earlier arrays take precedence over later ones
 # add InputArray InputArray OutputArray
-  add InputArray PhotonFilter/photons photons
+  add InputArray PhotonIsolation/photons photons
   add InputArray ElectronFilter/electrons electrons
   add InputArray MuonFilter/muons muons
-  add InputArray FastJetFinder/GenJets jets
+  add InputArray GenJetFinder/GenJets jets
 }
 
 ######################################
@@ -152,9 +169,9 @@ module PdgCodeFilter InterestingParticlesFilter {
 module TreeWriter TreeWriter {
     # add Branch InputArray BranchName BranchClass
     add Branch InterestingParticlesFilter/interestingParticles InterestingParticles GenParticle 
-    add Branch UniqueObjectFinder/photons GenPhoton Photon
-    add Branch UniqueObjectFinder/electrons GenElectron Electron
-    add Branch UniqueObjectFinder/muons GenMuon Muon
-    add Branch GenJetFinder/jets GenJet Jet
+    add Branch UniqueObjectFinder/photons Photon Photon
+    add Branch UniqueObjectFinder/electrons Electron Electron
+    add Branch UniqueObjectFinder/muons Muon Muon
+    add Branch UniqueObjectFinder/jets GenJet Jet
     add Branch GenMissingET/momentum GenMissingET MissingET
 }
