@@ -2,6 +2,10 @@
 MadGraph/output/
 # Ignore the common Delphes cards as we pull them from remote
 MadGraph/cards/delphes_cards/common
+# Ignore scripts that can be generated with the available scripts
+MadGraph/scripts/HIG/uuHtoGG_M-125_*TeV_MG5MLM-pythia8.mg5
+MadGraph/scripts/HIG/ddHtoGG_M-125_*TeV_MG5MLM-pythia8.mg5
+MadGraph/scripts/HIG/ssHtoGG_M-125_*TeV_MG5MLM-pythia8.mg5
 
 # Ignore py.py everywhere
 **/py.py
