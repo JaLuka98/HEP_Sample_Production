@@ -1,0 +1,17 @@
+import model sm
+set gauge unitary
+generate p p > t t~ h
+output /user/scratch/spaeh/MG5_temp/HIG/TTHtoGG_M-125_13TeV_MG5-pythia8
+launch /user/scratch/spaeh/MG5_temp/HIG/TTHtoGG_M-125_13TeV_MG5-pythia8
+shower=PY8
+madspin=ON
+detector=DELPHES # use Delphes
+done
+# Give external cards
+../../cards/pythia8_cards/pythia8_card_Hgamgam.dat
+../../cards/madspin_cards/TT_all.dat
+../../cards/delphes_cards/custom/particleLevel.tcl
+set use_syst False
+set ebeam 6500
+set nevents 100k
+done

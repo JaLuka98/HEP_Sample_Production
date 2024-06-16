@@ -1,0 +1,17 @@
+import model sm
+set gauge unitary
+define v = w+ w- z # define vector bosons
+define dp = j l+ l- ta+ ta- vl vl~ # define all possible decay products of vector bosons
+generate p p > v h, v > dp dp
+output /user/scratch/spaeh/MG5_temp/HIG/VHtoGG_M-125_14TeV_MG5-pythia8
+launch /user/scratch/spaeh/MG5_temp/HIG/VHtoGG_M-125_14TeV_MG5-pythia8
+shower=PY8
+detector=DELPHES # use Delphes
+done
+# Give external cards
+../../cards/pythia8_cards/pythia8_card_Hgamgam.dat
+../../cards/delphes_cards/custom/particleLevel.tcl
+set use_syst False
+set ebeam 7000
+set nevents 150k
+done
