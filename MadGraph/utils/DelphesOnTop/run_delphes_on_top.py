@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-
 import argparse
 import subprocess
 import os
+import glob
+
 
 def unpack_hepmc(hepmc_gz_file):
     hepmc_file = hepmc_gz_file.replace(".gz", "")
@@ -48,11 +49,25 @@ def process_single_hepmc_file(hepmc_gz_file):
     # Optionally, remove the HepMC file
     remove_hepmc(hepmc_file)
 
+
+def clean_delphes_files(directory):
+    delphes_files = []
+    print(directory)
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file == 'tag_1_delphes_events.root':
+                delphes_files.append(os.path.join(root, file))
+
+    # Remove each file
+    for delphes_file in delphes_files:
+        os.remove(delphes_file)
+        print(f"Delphes file removed: {delphes_file}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process a single HepMC.gz file.")
     parser.add_argument("hepmc_gz_file", help="Path to the HepMC.gz file.")
     args = parser.parse_args()
-
     if not os.path.exists(args.hepmc_gz_file):
         print(f"Error: File '{args.hepmc_gz_file}' does not exist.")
     else:

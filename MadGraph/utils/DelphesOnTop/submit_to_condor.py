@@ -14,10 +14,10 @@ arguments = {hepmc_gz_file}
 output = {process_directory}/{hepmc_stem}_{index}.out
 error = {process_directory}/{hepmc_stem}_{index}.err
 log = {process_directory}/{hepmc_stem}_{index}.log
-request_memory = 12GB
+request_memory = 14GB
 queue
 """
-# The typical 50k zcat Delphes run only takes max 9GB memory, but just to stay safe, we request 12GB to avoid that our jobs get killed
+# The typical 50k zcat Delphes run only takes max 9GB memory, but just to stay safe, we request 14GB to avoid that our jobs get killed
     condor_submit_script_path = f"{process_directory}/condor_submit_{hepmc_stem}_{index}.submit"
     with open(condor_submit_script_path, 'w') as script_file:
         script_file.write(condor_submit_script_content)
